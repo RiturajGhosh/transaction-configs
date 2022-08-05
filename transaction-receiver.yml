@@ -1,0 +1,22 @@
+server:
+  port: 8083
+spring:
+  datasource:
+    password: ALcoder
+    username: root
+    url: jdbc:mysql://localhost:3306/cargo_portal
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: common.model
